@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Connect - Incentive Milestone Hub</title>
+    <!-- FontAwesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="incentives.css">
+</head>
+<body>
+
+    <!-- Professional Navigation Header Bar -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <span class="logo-title">SKILL</span>
+                <span class="logo-accent">CONNECT</span>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="transfer.html" class="nav-link">Transfer</a>
+                <a href="incentives.html" class="nav-link active">Incentives</a>
+                <button type="button" class="logout-link-btn" id="logoutBtn">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Marketing and Overview Hero Framework -->
+    <section class="incentive-hero">
+        <div class="hero-container">
+            <div class="hero-badge-tag">
+                <i class="fa-solid fa-bolt-lightning"></i> Unlimited Continuous Payouts
+            </div>
+            <h1 class="hero-title">Turn Your Network Into <span class="gradient-text">Massive Rewards</span></h1>
+            <p class="hero-subtitle">
+                At Skill Connect, your dedication never goes unrewarded. Reach your target milestones and unlock massive, 
+                <strong>recurring cash incentives</strong>. Every single time you hit a benchmark, you get paid—no limits, no expiration!
+            </p>
+
+            <div class="hero-cards-grid">
+                <!-- Recruiter Informational Tier Card -->
+                <div class="hero-reward-card referral-tier">
+                    <div class="reward-icon-box">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
+                    <div class="reward-meta">
+                        <h3>The Recruiter Milestone</h3>
+                        <h2>Refer 100 Sellers</h2>
+                        <div class="payout-banner">Earn ₦50,000</div>
+                        <p class="reward-terms">
+                            <i class="fa-solid fa-rotate"></i> <strong>Infinite Loop:</strong> This is NOT a one-time reward. Every cycle of 100 direct referrals instantly unlocks another ₦50,000 in your account.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Closer Informational Tier Card -->
+                <div class="hero-reward-card sales-tier">
+                    <div class="reward-icon-box">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div class="reward-meta">
+                        <h3>The Elite Closer Milestone</h3>
+                        <h2>Sell 100 Courses</h2>
+                        <div class="payout-banner accent-banner">Earn ₦150,000</div>
+                        <p class="reward-terms">
+                            <i class="fa-solid fa-rotate"></i> <strong>Infinite Loop:</strong> Keep converting, keep earning. Every batch of 100 verified course sales drops a fresh ₦150,000 directly into your balance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Schedule Notice Alert -->
+            <div class="payout-schedule-alert">
+                <div class="schedule-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <div class="schedule-text">
+                    <h4>Guaranteed Weekly Disbursements</h4>
+                    <p>All accumulated milestone incentive earnings are audited and paid out <strong>once every week, every Friday!</strong> Start tracking your progress and prepare for your Friday payday.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Ledger Tracking Workspace -->
+    <section class="live-tracker-workspace">
+        <div class="tracker-grid">
+            
+            <!-- Target Referral Ledger Card (Card One) -->
+            <div class="tracker-card">
+                <div class="tracker-header">
+                    <div class="tracker-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
+                    <div>
+                        <h3>Direct Recruiter Progress</h3>
+                        <p>Live downstream registration metrics</p>
+                    </div>
+                </div>
+                
+                <div class="metric-display">
+                    <span class="metric-value" id="lblTotalSellers">0</span>
+                    <span class="metric-label">Sellers Referred</span>
+                </div>
+
+                <div class="progress-container">
+                    <div class="bar-background">
+                        <div class="bar-fill" id="referralBarFill"></div>
+                    </div>
+                    <div class="progress-labels-row">
+                        <span id="lblProgressText">Progress: 0 / 100</span>
+                        <span id="lblProgressPercent">0%</span>
+                    </div>
+                </div>
+
+                <div class="action-footer" id="actionFooterContainer">
+                    <button type="button" class="btn-claim disabled" disabled>
+                        <i class="fa-solid fa-lock"></i> Locked (Need 100 Referrals)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Target Course Sales Ledger Card (Card Two) -->
+            <div class="tracker-card">
+                <div class="tracker-header">
+                    <div class="tracker-icon sales-icon-color"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div>
+                        <h3>Downline Sales Milestone</h3>
+                        <p>Live course volume conversions across your team</p>
+                    </div>
+                </div>
+                
+                <div class="metric-display">
+                    <span class="metric-value" id="lblTotalCourseSales">0</span>
+                    <span class="metric-label">Team Courses Sold</span>
+                </div>
+
+                <div class="progress-container">
+                    <div class="bar-background">
+                        <div class="bar-fill sales-bar-fill" id="salesBarFill"></div>
+                    </div>
+                    <div class="progress-labels-row">
+                        <span id="lblSalesProgressText">Progress: 0 / 100</span>
+                        <span id="lblSalesProgressPercent">0%</span>
+                    </div>
+                </div>
+
+                <div class="action-footer" id="salesActionFooterContainer">
+                    <button type="button" class="btn-claim disabled" disabled>
+                        <i class="fa-solid fa-lock"></i> Locked (Need 100 Sales)
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Dedicated Verification Modal Box Overlays -->
+    <div class="modal-overlay" id="verificationModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-shield-halved"></i> Confirm Reward Settlement</h3>
+                <button type="button" class="modal-close-btn" id="btnCloseModal">&times;</button>
+            </div>
+            
+            <form id="frmIncentiveWithdrawal">
+                <div class="modal-body">
+                    <p class="modal-alert-desc">Please verify your corporate payout routes below before authorizing this transaction.</p>
+                    
+                    <div class="banking-preview-card">
+                        <div class="preview-row">
+                            <span>Sponsor Account:</span>
+                            <strong id="modalUsername">@...</strong>
+                        </div>
+                        <div class="preview-row">
+                            <span>Bank Name:</span>
+                            <strong id="modalBankName">Loading...</strong>
+                        </div>
+                        <div class="preview-row">
+                            <span>Account Number:</span>
+                            <strong id="modalAccountNo">Loading...</strong>
+                        </div>
+                        <div class="preview-row">
+                            <span>Account Holder:</span>
+                            <strong id="modalAccountName">Loading...</strong>
+                        </div>
+                        <div class="preview-row target-payout-row">
+                            <span>Settlement Value:</span>
+                            <strong class="highlight-emerald">₦50,000.00</strong>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtWalletPassword">Secure Wallet Password</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="password" id="txtWalletPassword" placeholder="Enter password to verify identity" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="btnCancelModal">Cancel</button>
+                    <button type="submit" class="btn-primary" id="btnSubmitWithdrawal">
+                        <i class="fa-solid fa-paper-plane"></i> Authorize Withdrawal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Compact Minimalist Footer Component -->
+    <footer class="app-compact-footer">
+        <div class="footer-inner">
+            <p class="footer-trust-badge">
+                <i class="fa-solid fa-circle-check"></i> Secure Application Database Ledger Synchronized
+            </p>
+            
+            <div class="footer-links">
+                <a href="dashboard.html" class="footer-link-item">Home</a> &middot;
+                <a href="incentives.html" class="footer-link-item active-footer-link">Milestones</a> &middot;
+                <a href="profile.html" class="footer-link-item">Account Configuration</a>
+            </div>
+            
+            <p class="footer-copyright">
+                &copy; 2026 Skill Connect Systems. Authorized transaction paths are governed by secure cryptographic environment rules.
+            </p>
+        </div>
+    </footer>
+
+    <script type="module" src="incentives.js"></script>
+</body>
+</html>

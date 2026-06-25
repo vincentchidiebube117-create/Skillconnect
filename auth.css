@@ -1,0 +1,521 @@
+/* ==========================================
+   RESET & BASE VARIABLES
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #2d3748;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==========================================
+   HEADER & NAVIGATION STYLES
+   ========================================== */
+.site-header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #1a365d;
+}
+
+.logo-icon {
+    width: 28px;
+    height: 28px;
+    color: #3182ce;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #3182ce;
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #1a365d;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ==========================================
+   MAIN AUTH LAYOUT & POLICY BOX
+   ========================================== */
+section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.auth-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    width: 100%;
+    max-width: 550px;
+    border: 1px solid #e2e8f0;
+}
+
+.auth-container > h2 {
+    text-align: center;
+    color: #1a365d;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: #718096;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.policy-box {
+    max-height: 280px;
+    overflow-y: auto;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f8fafc;
+    margin-bottom: 15px;
+}
+
+.policy-content h3 {
+    font-size: 13px;
+    color: #2b6cb0;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.policy-content p, .policy-content li {
+    font-size: 13px;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.policy-content ul {
+    padding-left: 20px;
+}
+
+.scroll-warning {
+    text-align: center;
+    font-size: 12px;
+    color: #dd6b20;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.checkbox-group input {
+    width: 18px;
+    height: 18px;
+    accent-color: #3182ce;
+    margin-top: 2px;
+}
+
+.checkbox-group label {
+    font-size: 13px;
+    color: #2d3748;
+    line-height: 1.4;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #2b6cb0;
+}
+
+.submit-btn:disabled, input[type="checkbox"]:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ==========================================
+   LOGIN & MULTI-STEP REGISTRATION TABS/FORMS
+   ========================================== */
+.form-toggle {
+    display: flex;
+    border-radius: 10px;
+    background: #edf2f7;
+    padding: 4px;
+    margin-bottom: 30px;
+}
+
+.form-toggle button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4a5568;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-toggle button.active {
+    background: #ffffff;
+    color: #1a365d;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* MANDATORY DEFAULT HIDDEN STATE */
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Controls & Inputs */
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #3182ce;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+}
+
+/* Dynamic verification & notification boxes */
+.verification-box {
+    background-color: #ebf8ff;
+    border-left: 4px solid #3182ce;
+    padding: 12px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 18px;
+    font-size: 14px;
+    color: #2b6cb0;
+}
+
+.verified-name {
+    font-weight: bold;
+}
+
+.info-banner {
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #4a5568;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.error-msg {
+    background-color: #fff5f5;
+    border-left: 4px solid #e53e3e;
+    border-radius: 0 8px 8px 0;
+    padding: 12px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    color: #c53030;
+    font-weight: 600;
+}
+
+.action-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #2b6cb0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.action-btn:hover {
+    background-color: #1a365d;
+}
+
+.verify-btn {
+    background-color: #4a5568;
+    margin-bottom: 15px;
+}
+
+.verify-btn:hover {
+    background-color: #2d3748;
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.back-btn {
+    flex: 1;
+    padding: 14px;
+    background-color: #edf2f7;
+    color: #4a5568;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.back-btn:hover {
+    background-color: #e2e8f0;
+}
+
+.button-group .action-btn {
+    flex: 2;
+    margin-bottom: 0;
+}
+
+/* Username validation styling */
+.username-status {
+    margin-top: 8px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.username-status.taken {
+    background-color: #fff5f5;
+    color: #c53030;
+    border: 1px solid #fed7d7;
+}
+
+.username-status.available {
+    background-color: #f0fff4;
+    color: #22543d;
+    border: 1px solid #c6f6d5;
+}
+
+.suggestion-list {
+    margin-top: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.sug-chip {
+    background: #e2e8f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #4a5568;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.sug-chip:hover {
+    background: #cbd5e0;
+    color: #1a365d;
+}
+
+#proceedStep3Btn:disabled {
+    background-color: #cbd5e0;
+    color: #718096;
+    cursor: not-allowed;
+}
+
+#proceedStep3Btn:disabled:hover {
+    background-color: #cbd5e0;
+}
+
+/* ==========================================
+   RESPONSIVE QUERY BREAKPOINTS
+   ========================================== */
+@media screen and (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        background-color: #ffffff;
+        flex-direction: column;
+        width: 100%;
+        height: calc(100vh - 70px);
+        padding: 40px 0;
+        transition: left 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .auth-container {
+        padding: 25px 20px;
+    }
+}
+
+/* Base styles (Mobile view - vertical) */
+.dashboard-footer {
+    padding: 20px;
+    border-top: 1px solid #e2e8f0;
+    background: #f8fafc;
+    text-align: center;
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column; /* Stacks items vertically */
+    gap: 15px;
+    align-items: center;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column; /* Stacks links and status */
+    gap: 10px;
+    align-items: center;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 15px;
+}
+
+/* Tablet and Desktop view (Horizontal) */
+@media (min-width: 768px) {
+    .footer-inner {
+        flex-direction: row; /* Switches to row */
+        justify-content: space-between;
+    }
+    .footer-right {
+        flex-direction: row; /* Switches to row */
+        gap: 30px;
+    }
+}

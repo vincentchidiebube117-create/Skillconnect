@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Connect - Withdrawal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="withdrawal.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <span class="logo-title">SKILL</span>
+                <span class="logo-accent">CONNECT</span>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="withdrawal-history.html" class="nav-link">Withdrawal History</a>
+                <button type="button" class="logout-link-btn" id="logoutBtn">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="info-strip-section">
+    <div class="info-grid-wrapper">
+        
+        <div class="info-card schedule-card">
+            <div class="card-icon-box">
+                <i class="fa-solid fa-calendar-days"></i>
+            </div>
+            <div class="card-details">
+                <h4>Portal Availability Schedule</h4>
+                <p class="status-badge-container">
+                    <span class="day-tag">Mondays</span>
+                    <span class="day-tag">Wednesdays</span>
+                    <span class="day-tag">Fridays</span>
+                </p>
+                <small class="helper-text">Requests submitted outside these open days will not be automatically processed.</small>
+            </div>
+        </div>
+
+        <div class="info-card limits-card">
+            <div class="card-icon-box">
+                <i class="fa-solid fa-sliders"></i>
+            </div>
+            <div class="card-details">
+                <h4>Daily Settlement Limits</h4>
+                <div class="limit-metrics-group">
+                    <div class="metric-item">
+                        <span class="metric-lbl">Minimum Single Request:</span>
+                        <span class="metric-val">₦100</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-lbl">Maximum Daily Total:</span>
+                        <span class="metric-val">₦500,000</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-lbl">withdrawal Charges :</span>
+                        <span class="metric-val">2%</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <main class="withdrawal-workspace">
+    <div class="workspace-grid">
+
+        <div class="workspace-card" id="accountDetailsCard">
+            <h3 class="card-title"><i class="fa-solid fa-building-columns"></i> 1. Link Your Bank Account</h3>
+            <p class="card-subtitle">Provide your destination banking parameters. Note: These details can only be configured **once** for security purposes.</p>
+            
+            <form id="paymentDetailsForm">
+                <div class="form-group">
+                    <label for="accountName">Account Name</label>
+                    <input type="text" id="accountName" class="form-control" placeholder="Enter full name on account" required>
+                </div>
+                <div class="form-group">
+                    <label for="bankName">Bank Name</label>
+                    <select id="bankName" class="form-control" required>
+                        <option value="" disabled selected>Choose your bank...</option>
+                        <option value="Access Bank">Access Bank</option>
+                        <option value="GTBank">Guaranty Trust Bank (GTB)</option>
+                        <option value="Zenith Bank">Zenith Bank</option>
+                        <option value="UBA">United Bank for Africa (UBA)</option>
+                        <option value="OPay">OPay</option>
+                        <option value="PalmPay">PalmPay</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="accountNumber">Account Number</label>
+                    <input type="text" id="accountNumber" class="form-control" placeholder="10-digit account number" maxlength="10" pattern="\d{10}" required>
+                </div>
+                <div class="form-group">
+                    <label for="bankBranch">Branch (Optional)</label>
+                    <input type="text" id="bankBranch" class="form-control" placeholder="e.g. Lagos Main Branch">
+                </div>
+                <div class="form-group">
+                    <label for="walletPasswordSetup">Wallet Security Password</label>
+                    <input type="password" id="walletPasswordSetup" class="form-control" placeholder="Confirm your security password" required>
+                </div>
+                <button type="submit" id="saveDetailsBtn" class="btn-action-submit btn-primary-color">Save & Bind Account</button>
+            </form>
+
+            <div id="lockedAccountView" class="hidden-view">
+                <div class="lock-notice-box">
+                    <i class="fa-solid fa-lock"></i> Account Details Locked & Verified
+                </div>
+                <div class="readonly-metrics-display">
+                    <p><strong>Holder:</strong> <span id="lblAccName">---</span></p>
+                    <p><strong>Bank:</strong> <span id="lblBankName">---</span></p>
+                    <p><strong>Account:</strong> <span id="lblAccNum">---</span></p>
+                    <p><strong>Branch:</strong> <span id="lblBranch">---</span></p>
+                </div>
+                <button type="button" id="proceedToWithdrawalBtn" class="btn-action-submit btn-accent-color">Proceed to Withdrawal</button>
+            </div>
+        </div>
+
+        <div class="workspace-card disabled-card" id="transactionFormCard">
+            <h3 class="card-title"><i class="fa-solid fa-wallet"></i> 2. Request Payout Settlement</h3>
+            <p class="card-subtitle">Specify settlement amounts. Processed requests post directly to the admin confirmation terminal dashboard queue.</p>
+            
+            <form id="payoutExecutionForm">
+                <div class="form-group">
+                    <label for="withdrawAmount">Amount to Withdraw (₦)</label>
+                    <input type="number" id="withdrawAmount" class="form-control" placeholder="Minimum ₦1,000" min="1000" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="walletPasswordVerification">Confirm Wallet Security Password</label>
+                    <input type="password" id="walletPasswordVerification" class="form-control" placeholder="Enter security password" required disabled>
+                </div>
+                <button type="submit" id="submitPayoutBtn" class="btn-action-submit btn-success-color" disabled>Process Settlement Request</button>
+            </form>
+            <div class="payout-timeline-tag"><i class="fa-solid fa-clock"></i> Settlements complete within 24 hours.</div>
+        </div>
+
+    </div>
+</main>
+</section>
+
+    <script type="module" src="withdrawal.js"></script>
+</body>
+</html>

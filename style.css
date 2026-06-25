@@ -1,0 +1,1681 @@
+/* ==========================================================================
+   1. CSS VARIABLES & RESET
+   ========================================================================== */
+:root {
+    /* Color Palette */
+    --clr-primary: #2563EB;
+    --clr-primary-hover: #1D4ED8;
+    --clr-secondary: #0F172A;
+    --clr-accent: #F59E0B;
+    --clr-bg: #FFFFFF;
+    --clr-text-main: #334155;
+    --clr-text-muted: #64748B;
+    
+    /* Layout Details */
+    --header-height: 80px;
+    --header-height-sticky: 70px;
+    --font-main: 'Inter', sans-serif;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-premium: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: var(--font-main);
+    color: var(--clr-text-main);
+    background-color: var(--clr-bg);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==========================================================================
+   2. HEADER & CONTAINER LAYOUT
+   ========================================================================== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(241, 245, 249, 0.6);
+    z-index: 1000;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+}
+
+/* Sticky Class triggered via JavaScript */
+.site-header.is-sticky {
+    height: var(--header-height-sticky);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-premium);
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ==========================================================================
+   3. LOGO STYLING
+   ========================================================================== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--clr-secondary);
+    transition: var(--transition-smooth);
+    z-index: 1010;
+}
+
+.logo-icon {
+    color: var(--clr-primary);
+    transition: var(--transition-smooth);
+}
+
+.logo:hover .logo-icon {
+    transform: rotate(-10deg) scale(1.05);
+}
+
+.text-primary {
+    color: var(--clr-primary);
+}
+
+/* ==========================================================================
+   4. NAVIGATION LINKS & BUTTONS
+   ========================================================================== */
+.nav-menu-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--clr-text-muted);
+    padding: 8px 0;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover, 
+.nav-link.active {
+    color: var(--clr-primary);
+}
+
+/* Animated Underline effect */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--clr-primary);
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Button UI */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--clr-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   5. MOBILE MENU UI (Hamburger & Overlay)
+   ========================================================================== */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1010;
+    padding: 0;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--clr-secondary);
+    border-radius: 2px;
+    transition: var(--transition-smooth);
+    transform-origin: left center;
+}
+
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE MEDIA QUERIES (Breakpoints)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .nav-menu-wrapper {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background-color: var(--clr-bg);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 100px 32px 40px 32px;
+        gap: 40px;
+        z-index: 999;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 24px;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        width: 100%;
+        display: block;
+    }
+
+    .header-actions {
+        width: 100%;
+    }
+
+    .header-actions .btn {
+        width: 100%;
+    }
+
+    /* Mobile Menu Open States Triggered via JS */
+    body.menu-is-open {
+        overflow: hidden;
+    }
+
+    body.menu-is-open .nav-menu-wrapper {
+        right: 0;
+    }
+
+    body.menu-is-open .nav-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Hamburger Animation States */
+    body.menu-is-open .mobile-toggle .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translateY(-2px);
+    }
+
+    body.menu-is-open .mobile-toggle .hamburger-line:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    body.menu-is-open .mobile-toggle .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translateY(2px);
+    }
+}
+
+
+/* ==========================================================================
+   HERO SECTION STYLE: ABOUT HERO
+   ========================================================================== */
+
+:root {
+    --primary-color: #2563eb;
+    --primary-glow: rgba(37, 99, 235, 0.15);
+    --accent-glow: rgba(147, 51, 234, 0.15);
+    --text-main: #ffffff;
+    --text-muted: #9ca3af;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+.about-hero {
+    position: relative;
+    padding: 140px 0 100px 0;
+    background-color: #0b0f19;
+    overflow: hidden;
+}
+
+/* Container & Layout */
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+}
+
+/* Content Elements */
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content .badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    color: #60a5fa;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    line-height: 1.15;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+}
+
+/* Gradient Text Effect */
+.text-gradient {
+    background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    max-width: 580px;
+}
+
+/* Button & Actions Layout */
+.hero-cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(37, 99, 235, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Visuals & Abstract Graphic Elements */
+.hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 90%; /* Responsive to screen width */
+    max-width: 440px; /* Limits size on huge screens */
+    margin: 0 auto; /* Centers it automatically */
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ensure the image fills the placeholder but doesn't overflow */
+.dashboard-logo {
+    width: 80%; /* Takes up 80% of the placeholder container */
+    height: auto;
+    object-fit: contain; /* Prevents stretching */
+    z-index: 2;
+}
+
+/* Hide the leftover SVG code if you aren't using it anymore */
+/* If you want to keep it, make sure it has the same class as dashboard-logo */
+
+/* Decorative Dynamic Lights Glows */
+.abstract-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.shape-1 {
+    width: 260px;
+    height: 260px;
+    background: var(--primary-color);
+    top: -10%;
+    left: -10%;
+    animation: floatingGlow 8s infinite alternate ease-in-out;
+}
+
+.shape-2 {
+    width: 220px;
+    height: 220px;
+    background: #7c3aed;
+    bottom: -5%;
+    right: -5%;
+    animation: floatingGlow 8s infinite alternate-reverse ease-in-out;
+}
+
+/* Main Display Placeholder Container */
+.placeholder-img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: var(--glass-bg);
+    /* Alternative texture option using background image properties if needed */
+    /* background: url('image_bff3d9.jpg') center/cover no-repeat; */
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
+}
+
+.placeholder-img svg {
+    width: 80px;
+    height: 80px;
+    color: rgba(255, 255, 255, 0.15);
+    transition: color 0.3s ease, transform 0.5s ease;
+}
+
+.placeholder-img:hover svg {
+    color: rgba(37, 99, 235, 0.4);
+    transform: scale(1.05);
+}
+
+/* Ambient Floating Keyframes Configuration */
+@keyframes floatingGlow {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(20px, 15px) scale(1.1); }
+}
+
+/* ==========================================================================
+   INTERSECTION OBSERVER REVEAL ANIMATIONS
+   ========================================================================== */
+.reveal-left, .reveal-right {
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
+}
+
+.reveal-left { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+
+.reveal-active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA MEDIA BREAKPOINTS RULES
+   ========================================================================== */
+@media (max-width: 992px) {
+    .grid-2-col {
+        grid-template-columns: 1fr;
+        gap: 56px;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-cta-group {
+        justify-content: center;
+    }
+    
+    .image-wrapper {
+        max-width: 380px;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-hero {
+        padding-top: 100px;
+    }
+    
+    .hero-cta-group .btn {
+        width: 100%;
+    }
+}
+
+
+/* ==========================================================================
+   VISION AND MISSION STYLE
+   ========================================================================== */
+
+.vision-mission {
+    padding: 80px 0;
+    background-color: #0b0f19; /* Matches your core dark ecosystem theme */
+    position: relative;
+}
+
+/* Reusable Container Configuration */
+.vision-mission .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Component Grid Core Rules */
+.vision-mission .grid-2-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+/* Cards Structural Blueprint */
+.purpose-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 40px;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Interactive Focus States */
+.purpose-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.vision-card:hover {
+    border-color: rgba(37, 99, 235, 0.4); /* Subtly tinted Primary Blue border on hover */
+}
+
+.mission-card:hover {
+    border-color: rgba(147, 51, 234, 0.4); /* Subtly tinted Accent Purple border on hover */
+}
+
+/* Icon / Image Frame Container */
+.card-icon-box {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.purpose-card:hover .card-icon-box {
+    transform: scale(1.08);
+}
+
+/* Brand Tints for Icon Boxes */
+.vision-card .card-icon-box {
+    background: rgba(37, 99, 235, 0.1);
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+.mission-card .card-icon-box {
+    background: rgba(147, 51, 234, 0.1);
+    border-color: rgba(147, 51, 234, 0.2);
+}
+
+/* Custom Image Properties */
+.card-custom-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Typography Elements */
+.purpose-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.5px;
+}
+
+.card-text {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #9ca3af; /* Crisp legible grey text tone */
+    margin: 0;
+}
+
+/* ==========================================================================
+   REVEAL STREAMS ANIMATION DEFAULTS
+   ========================================================================== */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
+}
+
+.reveal-up.reveal-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggering card transition offsets */
+.vision-mission .grid-2-col > div:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM MEDIA QUERY BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 768px) {
+    .vision-mission .grid-2-col {
+        grid-template-columns: 1fr; /* Stacks cards cleanly vertically on mobile screens */
+        gap: 24px;
+    }
+    
+    .purpose-card {
+        padding: 32px;
+    }
+}
+
+
+/* ==========================================================================
+   STATISTICS & WHY CHOOSE US STYLE
+   ========================================================================== */
+
+/* --- 1. Core Reusable Layout Utilities --- */
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.grid-4-col {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+/* --- 2. Statistics Bar Styles --- */
+.statistics {
+    padding: 60px 0;
+    background: #0d1222; /* Slightly altered dark layout offset */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 5;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 16px;
+}
+
+.stat-number {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -1px;
+}
+
+.stat-suffix {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #2563eb; /* Primary accent color link pointer */
+    margin-left: 2px;
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+/* --- 3. Why Choose Us Section Styles --- */
+.why-choose {
+    padding: 100px 0;
+    background-color: #0b0f19;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 56px auto;
+}
+
+.section-header .badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(147, 51, 234, 0.1);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+    color: #c084fc;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.section-header h2 {
+    font-size: clamp(2rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+}
+
+.section-header p {
+    font-size: 1.05rem;
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+/* --- 4. Feature Cards Layout --- */
+.features-grid {
+    margin-top: 16px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 32px 24px;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.3s ease, 
+                border-color 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+}
+
+/* Color Brand Overrides on Feature Frame Hover states */
+.feature-card:has(.font-primary):hover {
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+.feature-card:has(.font-accent):hover {
+    border-color: rgba(147, 51, 234, 0.3);
+}
+
+/* Feature Icon Wrap Base Layouts */
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.font-primary {
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.font-accent {
+    background: rgba(147, 51, 234, 0.1);
+}
+
+/* Image Core Properties inside Wrapper Frame */
+.feature-custom-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Feature Typography */
+.feature-card h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+}
+
+.feature-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #9ca3af;
+    margin: 0;
+}
+
+/* --- 5. Javascript Intersection Observer Support classes --- */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.7s ease;
+}
+
+.reveal-up.reveal-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger grid transitions on layout rendering steps */
+.features-grid .feature-card:nth-child(1) { transition-delay: 0s; }
+.features-grid .feature-card:nth-child(2) { transition-delay: 0.1s; }
+.features-grid .feature-card:nth-child(3) { transition-delay: 0.2s; }
+.features-grid .feature-card:nth-child(4) { transition-delay: 0.3s; }
+
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM BREAKPOINTS MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .grid-4-col {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .grid-4-col {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .statistics {
+        padding: 40px 0;
+    }
+    
+    .why-choose {
+        padding: 70px 0;
+    }
+}
+
+/* ==========================================================================
+   LEADERSHIP TEAM STYLE
+   ========================================================================== */
+
+.leadership {
+    padding: 100px 0;
+    background-color: #0b0f19;
+    position: relative;
+}
+
+/* Three-Column Grid Setup */
+.grid-3-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.team-grid {
+    margin-top: 24px;
+}
+
+/* Individual Team Card Structure */
+.team-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    padding: 32px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(37, 99, 235, 0.3); /* Dynamic hover blueprint anchor */
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+}
+
+/* Profile Image Frame Wrapper */
+.team-img-frame {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    padding: 6px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(147, 51, 234, 0.2) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 24px;
+    transition: transform 0.4s ease;
+}
+
+.team-card:hover .team-img-frame {
+    transform: scale(1.04);
+}
+
+/* Image Element Properties */
+.team-member-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    background-color: #1a2333; /* Dark solid fallback background behind photo load loops */
+}
+
+/* Member Bio & Information Text */
+.team-info {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.team-info h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.3px;
+}
+
+.team-info .role {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #60a5fa; /* Crisp branding blue secondary text status label */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 16px 0;
+}
+
+.team-info .bio {
+    display: block;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #9ca3af;
+}
+
+/* Social Icon Link Configurations */
+.team-socials {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.team-socials a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #9ca3af;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.team-socials a:hover {
+    color: #ffffff;
+    background: rgba(37, 99, 235, 0.2);
+    border-color: #2563eb;
+    transform: translateY(-2px);
+}
+
+.team-socials svg {
+    display: block;
+}
+
+/* JavaScript Intersection Observer Support Staggering */
+.team-grid .team-card:nth-child(1) { transition-delay: 0s; }
+.team-grid .team-card:nth-child(2) { transition-delay: 0.1s; }
+.team-grid .team-card:nth-child(3) { transition-delay: 0.2s; }
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT DESIGN BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 992px) {
+    .grid-3-col {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+    /* Centers third profile neatly down below if grid collapses on semi-tablets */
+    .team-grid .team-card:nth-child(3) {
+        grid-column: span 2;
+        max-width: 480px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .grid-3-col {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .team-grid .team-card:nth-child(3) {
+        grid-column: span 1;
+        max-width: none;
+    }
+}
+
+
+/* ==========================================================================
+   FIREBASE DYNAMIC REVIEWS DASHBOARD STYLES
+   ========================================================================== */
+
+.reviews-section {
+    padding: 100px 0;
+    background-color: #0b0f19;
+    color: #ffffff;
+}
+
+.reviews-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* --- 1. Dynamic Metric Dashboard --- */
+.stats-dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 56px;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+}
+
+.rating-stars-display {
+    color: #fbbf24;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+.stat-value {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.stat-total {
+    font-size: 1.2rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* --- 2. Dynamic Carousel Elements --- */
+.carousel-section {
+    margin-bottom: 64px;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 16px;
+}
+
+.carousel-track-wrapper {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+}
+
+/* Elements generated via Firestore loop injections */
+.carousel-item-node {
+    flex: 0 0 100%;
+    width: 100%;
+    background: linear-gradient(145deg, rgba(37, 99, 235, 0.05), rgba(147, 51, 234, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.carousel-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+}
+
+/* --- 3. Filter Tools --- */
+.grid-controls {
+    margin-bottom: 32px;
+}
+
+.search-box input {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 20px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #2563eb;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* --- 4. Main Dynamic Reviews Display Grid --- */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* Appended User Review Template Elements */
+.user-review-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.review-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.review-card-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #1e293b;
+}
+
+/* --- 5. Skeletons CSS Load State Layout --- */
+.skeleton-card {
+    height: 220px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 75%);
+    background-size: 200% 100%;
+    animation: loading-shimmer 1.5s infinite;
+    border-radius: 16px;
+}
+
+@keyframes loading-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* --- 6. Interface Modifiers --- */
+.load-more-container {
+    text-align: center;
+    margin-top: 48px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    border: 2px dashed rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+}
+
+/* ==========================================================================
+   BREAKPOINTS RESPONSIVE RULES
+   ========================================================================== */
+@media (max-width: 992px) {
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-dashboard { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+    .reviews-grid, .stats-dashboard { grid-template-columns: 1fr; }
+    .carousel-item-node { padding: 24px; }
+    .search-box input { max-width: 100%; }
+}
+
+
+/* ==========================================================================
+   ACADEMY KNOWLEDGE ECOSYSTEM STYLES
+   ========================================================================== */
+
+.academy-wrapper {
+    background-color: #0b0f19;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, sans-serif;
+    padding-bottom: 60px;
+}
+
+.courses-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* --- 1. Header & Badges --- */
+.academy-header {
+    padding: 100px 0 60px 0;
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    color: #60a5fa;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.academy-title {
+    font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    line-height: 1.15;
+}
+.text-gradient {
+    background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text; /* Added standard property for modern browser engine support */
+    -webkit-text-fill-color: transparent;
+}
+.academy-subtitle {
+    font-size: 1.1rem;
+    color: #9ca3af;
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- 2. Stats Dashboard Banner --- */
+.stats-banner {
+    background: #0d1222;
+    padding: 40px 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.stat-box {
+    text-align: center;
+}
+
+.stat-number-wrapper {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.stat-suffix {
+    color: #2563eb;
+    margin-left: 2px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* --- 3. Filter Controls Console --- */
+.control-console {
+    padding: 40px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(11, 15, 25, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.console-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.search-field {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b7280;
+    pointer-events: none;
+}
+
+.search-field input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 16px 14px 48px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.search-field input:focus {
+    outline: none;
+    border-color: #2563eb;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.filter-track {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none; /* Hide scrollbars */
+}
+
+.filter-track::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-btn {
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #9ca3af;
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.filter-btn.active {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+}
+
+/* --- 4. Main Dynamic Rendering Display Grid --- */
+.courses-display-section {
+    padding: 60px 0;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+/* Base style shared across generated user nodes or course objects */
+.course-card-node {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- 5. Skeleton Loaders Animation Loop --- */
+.skeleton-card {
+    height: 340px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 75%);
+    background-size: 200% 100%;
+    animation: layout-shimmer 1.5s infinite;
+    border-radius: 16px;
+}
+
+@keyframes layout-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* --- 6. Why Learn Perks Grid Layout --- */
+.why-learn-section {
+    padding: 100px 0;
+    background: #0d1222;
+}
+
+.sub-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 56px auto;
+}
+
+.sub-header h2 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-top: 12px;
+}
+
+.sub-header p {
+    color: #9ca3af;
+    margin-top: 12px;
+}
+
+.perks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.perk-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 32px 24px;
+    border-radius: 16px;
+}
+
+.perk-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.perk-card h4 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.perk-card p {
+    font-size: 0.92rem;
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+/* --- 7. Call To Action Footer Banner Area --- */
+.success-banner-area {
+    padding: 100px 0;
+}
+
+.banner-glass-inner {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(147, 51, 234, 0.08) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.banner-text-block h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.banner-text-block p {
+    color: #9ca3af;
+    font-size: 1rem;
+}
+
+.banner-cta-group {
+    display: flex;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* --- 8. Intersection Observer Support Framework --- */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.reveal-up.reveal-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT DESIGN SYSTEM BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .courses-grid, .perks-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .banner-glass-inner { flex-direction: column; text-align: center; padding: 40px; }
+    .banner-cta-group { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 768px) {
+    .console-wrapper { flex-direction: column; align-items: stretch; }
+    .search-field { max-width: 100%; }
+}
+
+@media (max-width: 640px) {
+    .courses-grid, .perks-grid, .stats-grid { grid-template-columns: 1fr; }
+    .academy-header { padding: 60px 0 40px 0; }
+    .banner-cta-group { flex-direction: column; }
+    .btn { width: 100%; }
+}

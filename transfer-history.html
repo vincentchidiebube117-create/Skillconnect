@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Connect - Transfer History Ledger</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="transfer-history.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <span class="logo-title">SKILL</span>
+                <span class="logo-accent">CONNECT</span>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="transfer.html" class="nav-link">Transfer Funds</a>
+                <a href="transfer-history.html" class="nav-link active">Transfer History</a>
+                <button type="button" class="logout-link-btn" id="logoutBtn">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="ledger-workspace">
+        <div class="ledger-header-area">
+            <div>
+                <h2 class="ledger-title"><i class="fa-solid fa-money-bill-transfer"></i> P2P Wallet Transfer Ledger</h2>
+                <p class="ledger-subtitle">Audited spreadsheet view tracking internal peer-to-peer capital distributions, system timestamps, and user balances.</p>
+            </div>
+            <div class="user-badge">
+                <i class="fa-solid fa-user-shield"></i> <span id="lblActiveProfile">...</span>
+            </div>
+        </div>
+
+        <div class="excel-table-container">
+            <table class="excel-ledger-table">
+                <thead>
+                    <tr>
+                        <th style="width: 70px;">Row</th>
+                        <th>Activity Type</th>
+                        <th>Sender (From)</th>
+                        <th>Receiver (To)</th>
+                        <th>Amount Transferred</th>
+                        <th>System Date & Time</th>
+                    </tr>
+                </thead>
+                <tbody id="transferLedgerBody">
+                    <tr class="loading-placeholder">
+                        <td colspan="6"><i class="fa-solid fa-spinner fa-spin"></i> Reading cloud transfer ledgers...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script type="module" src="transfer-history.js"></script>
+</body>
+</html>

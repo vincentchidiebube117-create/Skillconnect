@@ -1,0 +1,383 @@
+/* ==========================================
+   HEADER & NAVIGATION BAR STYLING
+   ========================================== */
+:root {
+    --primary-color: #2b6cb0;
+    --text-color: #2d3748;
+    --white: #ffffff;
+    --light-gray: #f7fafc;
+    --transition: all 0.3s ease;
+}
+
+.main-header {
+    background-color: var(--white);
+    border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+}
+
+/* Logo Typo */
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-color);
+    letter-spacing: -0.5px;
+    text-decoration: none;
+}
+
+.logo-accent {
+    color: var(--primary-color);
+}
+
+.logo-link {
+    text-decoration: none;
+}
+
+/* Nav Menu Desktop */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    padding: 0.5rem 0.25rem;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* Logout Button Action */
+.logout-btn {
+    background-color: #fff5f5;
+    color: #c53030;
+    border: 1px solid #fed7d7;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.logout-btn:hover {
+    background-color: #c53030;
+    color: var(--white);
+    border-color: #c53030;
+}
+
+/* Hamburger Mobile Toggle Trigger */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE BREAKPOINT (992px)
+   ========================================== */
+@media (max-width: 992px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        border-top: 1px solid #edf2f7;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+    }
+
+    .nav-menu.active {
+        max-height: 400px;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        box-sizing: border-box;
+        border-bottom: 1px solid #f7fafc;
+    }
+
+    .nav-link:hover, .nav-link.active {
+        background-color: #f7fafc;
+        border-bottom-color: #edf2f7;
+    }
+
+    .logout-btn {
+        width: calc(100% - 3rem);
+        margin: 1rem 1.5rem;
+        text-align: center;
+    }
+
+    /* Hamburger Animation States */
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+
+/* ==========================================
+   COURSE TRACKING MARKETPLACE THEME
+   ========================================== */
+.course-marketplace {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: #1a202c;
+    margin: 0 0 0.5rem 0;
+}
+
+.section-header p {
+    color: #718096;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Card Grid Alignment Layouts */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.course-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.06);
+}
+
+.course-card.owned {
+    border-color: #cbd5e0;
+    background-color: #f8fafc;
+}
+
+.course-card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.course-badge {
+    background: #ebf8ff;
+    color: #2b6cb0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.course-card.owned .course-badge {
+    background: #e6fffa;
+    color: #319795;
+}
+
+.course-title {
+    font-size: 1.25rem;
+    color: #2d3748;
+    margin: 0 0 0.25rem 0;
+    font-weight: 700;
+}
+
+.course-educator {
+    font-size: 0.9rem;
+    color: #718096;
+    margin: 0 0 1rem 0;
+}
+
+.course-preview-text {
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+}
+
+.details-link-btn {
+    background: none;
+    border: none;
+    color: #2b6cb0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.details-link-btn:hover {
+    text-decoration: underline;
+}
+
+/* Footer & Buttons Control Matrix */
+.course-card-footer {
+    padding: 1.25rem 1.5rem;
+    background: #f7fafc;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-price {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1a202c;
+}
+
+.action-btn {
+    padding: 0.65rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border: none;
+    text-align: center;
+}
+
+.order-btn {
+    background: #2b6cb0;
+    color: #ffffff;
+}
+
+.order-btn:hover {
+    background: #2b4c7e;
+}
+
+.access-btn {
+    background: #319795;
+    color: #ffffff;
+}
+
+.access-btn:hover {
+    background: #236c6b;
+}
+
+/* ==========================================
+   MODAL WINDOW DIALOG MECHANISMS
+   ========================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+.modal-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+
+.modal-card h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.5rem;
+    color: #1a202c;
+}
+
+.modal-educator {
+    margin: 0 0 1.5rem 0;
+    font-size: 0.95rem;
+    color: #718096;
+}
+
+.modal-body {
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.close-modal-btn {
+    background: #edf2f7;
+    color: #4a5568;
+    border: none;
+    padding: 0.65rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+
+.close-modal-btn:hover {
+    background: #e2e8f0;
+}

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register - Skill Connect</title>
+    <link rel="stylesheet" href="auth.css">
+    <style>
+        /* CSS to support inline password toggle styling */
+        .password-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .password-container input {
+            width: 100%;
+            padding-right: 60px;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #0056b3;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="logo-text">Skill-Connect</span>
+            </a>
+
+            <button class="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="testimony.html" class="nav-link">Testimonials</a>
+                <a href="payment.html" class="nav-link">Payment</a>
+                <a href="password.html" class="nav-link">FORGOTTEN PASSWORD</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="agreementSection">
+        <div class="auth-wrapper">
+            <div class="auth-container">
+                <h2>SKILL CONNECT</h2>
+                <p class="auth-subtitle">Seller Agreement & Community Policy</p>
+                
+                <div class="policy-box" id="policyBox">
+                    <div class="policy-content">
+                        <p>Welcome to Skill Connect. By registering as a seller, affiliate, or member on our platform, you agree to comply with the following terms and conditions.</p>
+
+                        <h3>SELLER REGISTRATION</h3>
+                        <p>To become an approved seller on Skill Connect, a one-time registration fee of ₦2,000 is required. This fee grants access to the seller dashboard, training resources, and platform opportunities.</p>
+
+                        <h3>SALES COMMISSION</h3>
+                        <p>Approved sellers are entitled to earn up to 30% commission on eligible course sales completed through their referral links or assigned sales channels, subject to platform policies.</p>
+
+                        <h3>SELLER REFERRAL REWARD</h3>
+                        <p>Members can qualify for a ₦50,000 bonus after successfully referring 100 active sellers who complete registration and meet Skill Connect's verification requirements.</p>
+
+                        <h3>COURSE SALES ACHIEVEMENT BONUS</h3>
+                        <p>Members can qualify for a ₦150,000 performance bonus after successfully generating 100 verified course sales in accordance with Skill Connect's tracking system and payment policies.</p>
+
+                        <h3>COURSE PRICING</h3>
+                        <p>All courses listed on Skill Connect must maintain the minimum approved pricing established by the company. Courses below ₦10,000 may not be eligible for seller commissions or promotional programs.</p>
+
+                        <h3>WITHDRAWAL POLICY</h3>
+                        <p>Withdrawals are processed exclusively on <strong>Mondays, Wednesdays, and Fridays</strong>. The minimum withdrawal amount is <strong>₦1000</strong>, and the maximum withdrawal limit is up to <strong>₦5,000,000</strong> per transaction.</p>
+
+                        <h3>ANTI-FRAUD POLICY</h3>
+                        <p>Skill Connect maintains a zero-tolerance policy against fraud, deception, identity theft, fake registrations, payment manipulation, chargeback abuse, account farming, or any activity intended to unfairly gain financial benefits.</p>
+
+                        <h3>ACCOUNT VERIFICATION</h3>
+                        <p>Skill Connect reserves the right to verify seller identities, suspend suspicious accounts, request supporting documentation, and investigate unusual activities at any time.</p>
+
+                        <h3>FAIR PARTICIPATION</h3>
+                        <p>All members are expected to conduct themselves professionally and respectfully. Harassment, threats, discrimination, hate speech, or abusive behavior toward other members will not be tolerated.</p>
+
+                        <h3>NO GUARANTEED INCOME</h3>
+                        <p>Skill Connect provides educational tools, sales opportunities, and referral programs. Individual earnings depend on personal effort, skill, marketing activities, and market conditions.</p>
+
+                        <h3>ACCURATE INFORMATION</h3>
+                        <p>Members must provide accurate registration details. False information may result in account suspension or permanent removal from the platform.</p>
+
+                        <h3>PROHIBITED ACTIVITIES</h3>
+                        <ul>
+                            <li>Fake referrals</li>
+                            <li>Multiple accounts for the same person</li>
+                            <li>Spam marketing</li>
+                            <li>Misleading advertisements</li>
+                            <li>Unauthorized use of Skill Connect branding</li>
+                            <li>Fraudulent transactions</li>
+                            <li>Manipulation of platform systems</li>
+                        </ul>
+
+                        <h3>PAYMENT REVIEW</h3>
+                        <p>Skill Connect reserves the right to review and validate transactions before commissions, bonuses, or rewards are approved and paid.</p>
+
+                        <h3>PLATFORM CHANGES</h3>
+                        <p>Skill Connect may update pricing, commission structures, bonuses, features, or platform policies when necessary. Members will be notified of significant updates.</p>
+
+                        <h3>ACCOUNT TERMINATION</h3>
+                        <p>Skill Connect reserves the right to suspend or terminate any account that violates these policies or engages in activities that harm the company, its members, or customers.</p>
+
+                        <h3>COMMUNITY VALUES</h3>
+                        <p>Skill Connect is committed to providing equal opportunities to all members regardless of gender, ethnicity, nationality, disability, religion, or background. We welcome honest individuals who are committed to learning, growth, and ethical business practices.</p>
+
+                        <h3>ACCEPTANCE OF TERMS</h3>
+                        <p>By clicking "I Agree" and registering on Skill Connect, you acknowledge that you have read, understood, and accepted this Seller Agreement and Community Policy.</p>
+                    </div>
+                </div>
+
+                <div class="scroll-warning" id="scrollWarning">
+                    Please scroll to the bottom to read the entire policy.
+                </div>
+
+                <form id="agreementForm">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agreeTerms" disabled>
+                        <label for="agreeTerms">I have read and accept the Seller Agreement and Community Policy</label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn" disabled>I Agree & Register</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="authSection" style="display: none;">
+        <div class="auth-wrapper">
+            <div class="auth-container">
+                <div class="form-toggle">
+                    <button id="loginTabBtn" class="active" onclick="switchTab('login')">Login</button>
+                    <button id="registerTabBtn" onclick="switchTab('register')">Register</button>
+                </div>
+
+                <form id="loginForm" class="auth-form active">
+                    <h2>SIGN IN</h2>
+                    <p class="auth-subtitle">Access your Skill Connect dashboard</p>
+
+                    <div class="input-group">
+                        <label for="loginIdentifier">Email or Username</label>
+                        <input type="text" id="loginIdentifier" required placeholder="Enter your email or username">
+                    </div>
+
+                    <div id="loginVerifyBox" class="verification-box" style="display: none;">
+                        <p>Welcome back, <span id="loginUserFullname" class="verified-name"></span></p>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="password-container">
+                            <input type="password" id="loginPassword" required placeholder="••••••••">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('loginPassword', this)">Show</button>
+                        </div>
+                    </div>
+
+                    <button type="button" id="loginVerifyBtn" class="action-btn verify-btn" onclick="verifyLoginUser()">Verify User</button>
+                    <button type="submit" id="loginSubmitBtn" class="action-btn" style="display: none;">Login</button>
+                </form>
+
+                 <button>  
+                <a href="password.html" class="nav-link">FORGOTTEN PASSWORD</a>
+                 </button>
+
+                <form id="registerStep1" class="auth-form">
+                    <h2>REGISTER</h2>
+                    <p class="auth-subtitle">Step 1 of 3: Sponsor Verification</p>
+
+                    <div class="input-group">
+                        <label for="sponsorUsername">Sponsor Username</label>
+                        <input type="text" id="sponsorUsername" required placeholder="Enter sponsor username">
+                    </div>
+
+                    <div id="sponsorVerifyBox" class="verification-box" style="display: none;">
+                        <p>Sponsor Verified: <span id="sponsorFullname" class="verified-name"></span></p>
+                    </div>
+
+                    <button type="button" id="verifySponsorBtn" class="action-btn verify-btn" onclick="verifySponsor()">Verify Sponsor</button>
+                    <button type="button" id="proceedStep2Btn" class="action-btn" style="display: none;" onclick="nextStep(1, 2)">Proceed to Step 2</button>
+                </form>
+
+                <form id="registerStep2" class="auth-form">
+                    <h2>REGISTER</h2>
+                    <p class="auth-subtitle">Step 2 of 3: Personal & Security Details</p>
+
+                    <div class="input-group">
+                        <label for="regUsername">Username</label>
+                        <input type="text" id="regUsername" required placeholder="Choose a unique username" oninput="checkUsernameAvailability()">
+                        <div id="usernameStatus" class="username-status" style="display: none;"></div>
+                        <div id="usernameSuggestions" class="suggestion-list"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="regFullname">Fullname</label>
+                        <input type="text" id="regFullname" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="regEmail">Email Address</label>
+                        <input type="email" id="regEmail" required placeholder="name@example.com">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="regPhone">Phone Number</label>
+                        <input type="tel" id="regPhone" required placeholder="080XXXXXXXX">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="regAddress">Address</label>
+                        <input type="text" id="regAddress" required placeholder="Your current address">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="regDob">Date of Birth</label>
+                        <input type="date" id="regDob" required>
+                    </div>
+
+                    <!-- Moved Password Creation Here with View Option -->
+                    <div class="input-group">
+                        <label for="regLoginPassword">Create Login Password</label>
+                        <div class="password-container">
+                            <input type="password" id="regLoginPassword" required placeholder="••••••••">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('regLoginPassword', this)">Show</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="confirmLoginPassword">Confirm Login Password</label>
+                        <div class="password-container">
+                            <input type="password" id="confirmLoginPassword" required placeholder="••••••••">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmLoginPassword', this)">Show</button>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="back-btn" onclick="prevStep(2, 1)">Back</button>
+                        <button type="button" class="action-btn" id="proceedStep3Btn" onclick="nextStep(2, 3)">Proceed to Step 3</button>
+                    </div>
+                </form>
+
+                <form id="registerStep3" class="auth-form">
+                    <h2>REGISTER</h2>
+                    <p class="auth-subtitle">Step 3 of 3: Security & Payment (₦2,000 fee)</p>
+
+                    <div class="info-banner">
+                        You will be charged with ₦2,000  from wallet balance 
+                    </div>
+
+                    <div class="input-group">
+                        <label for="confirmSponsor">Re-enter Sponsor Username</label>
+                        <input type="text" id="confirmSponsor" required placeholder="Confirm sponsor username">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="regWalletPassword">Enter Wallet Password (Transaction PIN)</label>
+                        <div class="password-container">
+                            <input type="password" id="regWalletPassword" required placeholder="••••••••">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('regWalletPassword', this)">Show</button>
+                        </div>
+                    </div>
+
+                    <div id="paymentErrorMsg" class="error-msg" style="display: none;">Insufficient balance. Registration failed.</div>
+
+                    <div class="button-group">
+                        <button type="button" class="back-btn" onclick="prevStep(3, 2)">Back</button>
+                        <button type="submit" class="action-btn submit-btn">Register Now</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- View Password Helper Script Function -->
+    <script>
+        function togglePasswordVisibility(inputId, buttonElement) {
+            const inputField = document.getElementById(inputId);
+            if (inputField.type === "password") {
+                inputField.type = "text";
+                buttonElement.textContent = "Hide";
+            } else {
+                inputField.type = "password";
+                buttonElement.textContent = "Show";
+            }
+        }
+    </script>
+
+    
+<footer class="dashboard-footer">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <p>&copy; 2026 SkillConnect. All rights reserved.</p>
+        </div>
+        
+        <div class="footer-right">
+            <nav class="footer-nav">
+                <a href="skillconectacademy200@gmail.com">Support</a>
+                <a href="auth.html">Security</a>
+                <a href="auth.html">Terms of Service</a>
+            </nav>
+            <div class="footer-status">
+                <span class="status-dot"></span> System Operational
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script type="module" src="auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COURSES</title>
+    <link rel="stylesheet" href="course.css">
+</head>
+<body>
+    <header class="main-header">
+    <div class="header-container">
+        <div class="logo-area">
+            <a href="index.html" class="logo-link">
+                <span class="logo-text">Skill <span class="logo-accent">Connect</span></span>
+            </a>
+        </div>
+
+        <button class="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <nav class="nav-menu">
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="course.html" class="nav-link active">Course</a>
+            <a href="course-history.html" class="nav-link">ORDER History</a>
+            <a href="referral-history.html" class="nav-link">Referral History</a>
+            <a href="index.html" class="nav-link">Home</a>
+            <button type="button" id="logoutBtn" class="logout-btn">Logout</button>
+        </nav>
+    </div>
+</header>
+
+<section class="course-marketplace">
+    <div class="section-header">
+        <h2>Available Certification Courses</h2>
+        <p>Expand your expertise. Invest in premium, industry-vetted skill tracks.</p>
+    </div>
+
+    <div class="course-grid" id="courseGridContainer"></div>
+</section>
+
+<div class="modal-overlay" id="detailsModal" style="display: none;">
+    <div class="modal-card">
+        <h3 id="modalCourseTitle">Course Details</h3>
+        <p class="modal-educator">Educator: <span id="modalCourseEducator"></span></p>
+        <div class="modal-body">
+            <p id="modalCourseDescription"></p>
+        </div>
+        <button type="button" class="close-modal-btn" onclick="closeCourseModal()">Close Window</button>
+    </div>
+</div>
+
+<script type="module" src="course.js"></script>
+</body>
+</html>

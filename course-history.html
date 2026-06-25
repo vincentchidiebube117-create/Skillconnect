@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Connect - Referral & Order History</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="course-history.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <span class="logo-title">SKILL</span>
+                <span class="logo-accent">CONNECT</span>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="withdrawal.html" class="nav-link">Withdrawal Workspace</a>
+                <a href="course-history.html" class="nav-link active">Affiliate & Orders</a>
+                <button type="button" class="logout-link-btn" id="logoutBtn">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="history-workspace">
+        <div class="workspace-header">
+            <div>
+                <h2 class="workspace-title"><i class="fa-solid fa-chart-line"></i> Referral Commission & Order Ledger</h2>
+                <p class="workspace-subtitle">Comprehensive tracking of your direct course orders and incoming 30% sponsor referral bonuses.</p>
+            </div>
+            <div class="user-pill-badge">
+                <i class="fa-solid fa-user-check"></i> <span id="lblActiveProfile">---</span>
+            </div>
+        </div>
+
+        <div class="excel-grid-container">
+            <table class="excel-data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 70px;">Row</th>
+                        <th>Transaction Type</th>
+                        <th>Sender (From)</th>
+                        <th>Receiver (To)</th>
+                        <th>Course Parameter</th>
+                        <th>Base Cost</th>
+                        <th>30% Sponsor Bonus</th>
+                        <th>System Date & Time</th>
+                    </tr>
+                </thead>
+                <tbody id="historyLedgerBody">
+                    <tr class="loading-state-row">
+                        <td colspan="8"><i class="fa-solid fa-spinner fa-spin"></i> Accessing Firestore order ledgers...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script type="module" src="course-history.js"></script>
+</body>
+</html>

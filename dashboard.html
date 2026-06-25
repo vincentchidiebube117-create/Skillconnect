@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Connect Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <!-- FontAwesome for the hamburger icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <!-- Logo Area -->
+            <div class="logo-area">
+                <a href="#" class="logo">SKILL <span>CONNECT</span></a>
+            </div>
+
+            <!-- Mobile Hamburger Menu Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Navigation Menu -->
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="payment.html" class="active">PAYMENT PORTAL</a></li>
+                    <li><a href="course.html">COURSES</a></li>
+                    <li><a href="referral-history.html">REFERRALS</a></li>
+                    <li><a href="withdrawal.html">WITHDRAWAL</a></li>
+                    <li><a href="withdrawal-history.html">WITHDRAWAL HISTORY</a></li>
+                    <li><a href="course-history.html">COURSE ORDER HISTORY</a></li>
+                    <li><a href="transfer.html">WALLET TRANSFER</a></li>
+                    <li><a href="transfer-history.html">WALLET TRANSFER HISTORY</a></li>
+                    <li><a href="incentives.html">INCENTIVE</a></li>
+                    <li><a href="auth.html" class="logout-btn">LOGOUT</a></li>
+                    <li><a href="payment.html" class="nav-link">Payment</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="dashboard-overview">
+    <div class="card-container">
+        
+        <div class="overview-card profile-card">
+            <h3>Account Profile</h3>
+            <div class="card-content">
+                <p>Welcome back, <span id="dashUsername" class="highlight">...</span></p>
+                <p class="fullname-display">Name: <span id="dashFullname">Loading...</span></p>
+                <div class="status-wrapper">
+                    Status: <span id="dashStatus" class="status-badge">Checking...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="overview-card balance-card">
+            <h3>Wallet Balance</h3>
+            <div class="card-content">
+                <p class="balance-display">₦<span id="dashBalance">0.00</span></p>
+                <p class="balance-subtitle">Available Funds</p>
+            </div>
+        </div>
+
+        <div class="overview-card referrals-card">
+            <h3>Total Referrals</h3>
+            <div class="card-content">
+                <p class="referral-count" id="dashReferrals">0</p>
+                <p class="referral-subtitle">Sponsored Accounts</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div id="restrictionOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); color: white; z-index: 9999; justify-content: center; align-items: center; text-align: center; flex-direction: column;">
+    <h1 style="color: #ff3333; font-size: 2.5rem; margin-bottom: 1rem;">Access Restricted</h1>
+    <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem auto;">You are on restriction to access this account. Please contact support for assistance regarding your pending status.</p>
+</div>
+
+<section>
+
+    <div class="dashboard-stats-grid">
+    
+    <div class="metric-card">
+        <div class="card-icon" style="background: #eef2ff; color: #4f46e5;">📚</div>
+        <div class="card-info">
+            <h3>Total Course Sold</h3>
+            <p class="metric-value" id="dashTotalCoursesSold">0</p>
+            <span class="metric-subtext">Count of network student enrollments</span>
+        </div>
+    </div>
+
+    <div class="metric-card">
+        <div class="card-icon" style="background: #ecfdf5; color: #059669;">💰</div>
+        <div class="card-info">
+            <h3>Available Bal</h3>
+            <p class="metric-value">₦<span id="dashAvailableBalance">0</span></p>
+            <p class="withdrawable-tag">Withdrawable Amount</p>
+        </div>
+    </div>
+
+    <div class="metric-card">
+        <div class="card-icon" style="background: #fef3c7; color: #d97706;">📈</div>
+        <div class="card-info">
+            <h3>Total Earnings</h3>
+            <p class="metric-value">₦<span id="dashTotalEarnings">0</span></p>
+            <span class="metric-subtext">All-time commissions accumulated</span>
+        </div>
+    </div>
+
+</div>
+</section>
+
+<div class="card">
+    <h3>Update Wallet Password</h3>
+    <input type="email" id="verEmail" placeholder="Enter your Email">
+    <input type="password" id="verPassword" placeholder="Enter Login Password">
+    <input type="password" id="newWalletPassword" placeholder="New Wallet Password">
+    <button id="updateWalletBtn">Update Wallet Password</button>
+</div>
+
+
+<footer class="dashboard-footer">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <p>&copy; 2026 SkillConnect. All rights reserved.</p>
+        </div>
+        
+        <div class="footer-right">
+            <nav class="footer-nav">
+                <a href="skillconectacademy200@gmail.com">Support</a>
+                <a href="auth.html">Security</a>
+                <a href="auth.html">Terms of Service</a>
+            </nav>
+            <div class="footer-status">
+                <span class="status-dot"></span> System Operational
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="module" src="dashboard.js"></script>
+</body>
+</html>

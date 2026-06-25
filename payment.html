@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAYMENT | SkillConnect</title>
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="nav-container">
+        <a href="dashboard.html" class="logo-brand">Skill<span>Connect</span></a>
+        <button class="mobile-toggle" id="mobile-toggle"><span></span><span></span><span></span></button>
+        <nav class="nav-menu" id="nav-menu">
+            <ul class="nav-list">
+                <li><a href="payment.html" class="active">Payments</a></li>
+                <li><a href="auth.html" class="logout-link">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="payment-section">
+        <div class="payment-container">
+            <div class="payment-card" id="form-gate">
+                <h3>Funding Request</h3>
+                <form id="payment-intent-form">
+                    <div class="input-group">
+                        <label>Funding Username</label>
+                        <input type="text" id="pay-username" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Payer Full Name</label>
+                        <input type="text" id="pay-fullname" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Amount (NGN)</label>
+                        <input type="number" id="pay-amount" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Method</label>
+                        <select id="pay-method"><option value="bank">Bank Transfer</option><option value="usdt">USDT</option></select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Proceed</button>
+                </form>
+            </div>
+
+            <div class="payment-card hidden" id="details-gate">
+                <h3>Payment Instructions</h3>
+                <div id="banking-details" class="details-box"></div>
+                <div class="input-group">
+                    <label>Enter Transaction ID</label>
+                    <input type="text" id="final-ref" required>
+                </div>
+                <button id="confirm-payment" class="btn btn-success">Confirm Payment Sent</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="ledger-section">
+        <div class="payment-container">
+            <h3>Transaction History</h3>
+            <table class="ledger-table">
+                <thead><tr><th>Date</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead>
+                <tbody id="ledger-body"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<div id="receipt-modal" class="modal hidden">
+    <div class="receipt-card" id="receipt-content"></div>
+</div>
+
+<script type="module" src="payment.js"></script>
+</body>
+</html>

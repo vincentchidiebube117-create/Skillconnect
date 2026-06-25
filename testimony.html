@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Connect | Learn & Grow Together</title>
+    <link rel="stylesheet" href="testimony.css">
+</head>
+<body>
+
+    <header class="site-header" id="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo-brand">Skill<span>Connect</span></a>
+            
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                <span class="burger-bar"></span>
+                <span class="burger-bar"></span>
+                <span class="burger-bar"></span>
+            </button>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="#write-review" class="nav-link">Submit Review</a></li>
+                    <li><a href="#reviews-display-section" class="nav-link">View Stories</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="review-submission-section" id="write-review">
+        <div class="reviews-container">
+            <div class="form-glass-card">
+                <div class="form-header">
+                    <span class="badge">Share Your Journey</span>
+                    <h2>Submit Your <span class="text-gradient">Experience</span></h2>
+                    <p>Tell the community how Skill Connect has helped you build high-demand workflows.</p>
+                </div>
+
+                <form id="testimonial-form" autocomplete="off">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="review-fullname">Full Name</label>
+                            <input type="text" id="review-fullname" placeholder="e.g. John Doe" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="review-username">Username</label>
+                            <input type="text" id="review-username" placeholder="e.g. johndoe_tech" required>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label for="review-email">Email Address</label>
+                            <input type="email" id="review-email" placeholder="e.g. john@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group rating-selection-block">
+                        <label>Your Rating</label>
+                        <div class="star-rating-options">
+                            <input type="radio" name="form-stars" id="star5" value="5" checked><label for="star5">★ 5</label>
+                            <input type="radio" name="form-stars" id="star4" value="4"><label for="star4">★ 4</label>
+                            <input type="radio" name="form-stars" id="star3" value="3"><label for="star3">★ 3</label>
+                            <input type="radio" name="form-stars" id="star2" value="2"><label for="star2">★ 2</label>
+                            <input type="radio" name="form-stars" id="star1" value="1"><label for="star1">★ 1</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="review-message">Your Review</label>
+                        <textarea id="review-message" rows="5" placeholder="Share specific details about the digital skills you learned and your career growth path..." required></textarea>
+                    </div>
+
+                    <div id="form-alert-msg" class="form-alert hidden"></div>
+
+                    <div class="form-submit-container">
+                        <button type="submit" class="btn btn-primary" id="submit-review-btn">
+                            <span>Submit Review</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews-display-section" id="reviews-display-section">
+        <div class="reviews-container">
+            
+            <div class="display-header">
+                <span class="badge">Community Voices</span>
+                <h2>What Our Members <span class="text-gradient">Are Saying</span></h2>
+                <p>Real experiences fetched directly from our global student database metrics.</p>
+            </div>
+
+            <div class="stats-dashboard">
+                <div class="stat-card glass-card">
+                    <div class="rating-stars-display">★★★★★</div>
+                    <div class="stat-value"><span id="avg-rating">4.8</span><span class="stat-total">/5</span></div>
+                    <p class="stat-label">Average Rating</p>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-value" id="total-reviews">0</div>
+                    <p class="stat-label">Verified Reviews</p>
+                </div>
+            </div>
+
+            <div class="reviews-grid" id="reviews-grid">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+
+            <div class="empty-state hidden" id="empty-state">
+                <h3>No reviews found.</h3>
+                <p>Be the first one to share your learning journey parameters with the ecosystem!</p>
+            </div>
+
+        </div>
+    </section>
+
+    <script type="module" src="testimoney.js"></script>
+</body>
+</html>

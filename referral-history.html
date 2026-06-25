@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Connect - Referral Team History</title>
+    <!-- FontAwesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="referral-history.css">
+</head>
+<body>
+
+    <!-- Professional Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <span class="logo-title">SKILL</span>
+                <span class="logo-accent">CONNECT</span>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="transfer.html" class="nav-link">Transfer</a>
+                <a href="referral-history.html" class="nav-link active">My Referrals</a>
+                <button type="button" class="logout-link-btn" id="logoutBtn">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Spreadsheet Workspace -->
+    <main class="ledger-workspace">
+        <div class="ledger-header-area">
+            <div>
+                <h2 class="ledger-title"><i class="fa-solid fa-users-viewfinder"></i> Direct Referral Team Directory</h2>
+                <p class="ledger-subtitle">Audited real-time map of members registered directly through your affiliate path and their base account valuations.</p>
+            </div>
+            <div class="user-badge">
+                <i class="fa-solid fa-network-wired"></i> Sponsor: <span id="lblActiveProfile">...</span>
+            </div>
+        </div>
+
+        <!-- Excel Structured Data Table -->
+        <div class="excel-table-container">
+            <table class="excel-ledger-table">
+                <thead>
+                    <tr>
+                        <th style="width: 70px;">Row</th>
+                        <th>Sponsored Username</th>
+                        <th>Full Name</th>
+                        <th>Email Contact</th>
+                        <th>Phone Parameter</th>
+                        <th>Registration Fee</th>
+                        <th>Profile Status</th>
+                        <th>Registration Date & Time</th>
+                    </tr>
+                </thead>
+                <tbody id="referralLedgerBody">
+                    <!-- Dynamic Rows Injected via JS Module -->
+                    <tr class="loading-placeholder">
+                        <td colspan="8"><i class="fa-solid fa-spinner fa-spin"></i> Reading cloud registration records...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Script Injection Entry Module -->
+    <script type="module" src="referral-history.js"></script>
+</body>
+</html>
