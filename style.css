@@ -297,275 +297,70 @@ a {
 }
 
 
-/* ==========================================================================
-   HERO SECTION STYLE: ABOUT HERO
-   ========================================================================== */
-
-:root {
-    --primary-color: #2563eb;
-    --primary-glow: rgba(37, 99, 235, 0.15);
-    --accent-glow: rgba(147, 51, 234, 0.15);
-    --text-main: #ffffff;
-    --text-muted: #9ca3af;
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-}
-
-.about-hero {
+/* Container Setup */
+.hero-section {
     position: relative;
-    padding: 140px 0 100px 0;
-    background-color: #0b0f19;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
     overflow: hidden;
+    background-color: #0b0f19;
 }
 
-/* Container & Layout */
-.about-container {
+/* The Image as a Background layer */
+.bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps the image aspect ratio professional */
+    z-index: 1;
+    transition: transform 1.2s ease;
+}
+
+/* Subtle Zoom Animation */
+.hero-section:hover .bg-img {
+    transform: scale(1.03);
+}
+
+/* Overlay for Readability */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(11, 15, 25, 0.95), rgba(11, 15, 25, 0.6));
+    z-index: 2;
+}
+
+/* Content Layout (Matches your original styles) */
+.content-wrapper {
+    position: relative;
+    z-index: 3;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
 }
 
-.grid-2-col {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 64px;
-    align-items: center;
-}
-
-/* Content Elements */
 .hero-content {
-    position: relative;
-    z-index: 2;
+    max-width: 600px;
 }
 
-.hero-content .badge {
-    display: inline-block;
-    padding: 6px 14px;
-    background: rgba(37, 99, 235, 0.1);
-    border: 1px solid rgba(37, 99, 235, 0.2);
-    color: #60a5fa;
-    border-radius: 100px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin-bottom: 24px;
-    text-transform: uppercase;
-}
-
-.hero-title {
-    font-size: clamp(2.5rem, 5vw, 3.75rem);
-    line-height: 1.15;
-    font-weight: 800;
-    color: var(--text-main);
-    letter-spacing: -1px;
-    margin-bottom: 24px;
-}
-
-/* Gradient Text Effect */
-.text-gradient {
-    background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero-subtitle {
-    font-size: 1.1rem;
-    line-height: 1.75;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-    max-width: 580px;
-}
-
-/* Button & Actions Layout */
-.hero-cta-group {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 28px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 12px;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background: var(--primary-color);
-    color: #ffffff;
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
-}
-
-.btn-primary:hover {
-    background: #1d4ed8;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(37, 99, 235, 0.4);
-}
-
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(8px);
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-/* Visuals & Abstract Graphic Elements */
-.hero-visual {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.image-wrapper {
-    position: relative;
-    width: 90%; /* Responsive to screen width */
-    max-width: 440px; /* Limits size on huge screens */
-    margin: 0 auto; /* Centers it automatically */
-    aspect-ratio: 1 / 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Ensure the image fills the placeholder but doesn't overflow */
-.dashboard-logo {
-    width: 80%; /* Takes up 80% of the placeholder container */
-    height: auto;
-    object-fit: contain; /* Prevents stretching */
-    z-index: 2;
-}
-
-/* Hide the leftover SVG code if you aren't using it anymore */
-/* If you want to keep it, make sure it has the same class as dashboard-logo */
-
-/* Decorative Dynamic Lights Glows */
-.abstract-shape {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    z-index: 1;
-    opacity: 0.6;
-}
-
-.shape-1 {
-    width: 260px;
-    height: 260px;
-    background: var(--primary-color);
-    top: -10%;
-    left: -10%;
-    animation: floatingGlow 8s infinite alternate ease-in-out;
-}
-
-.shape-2 {
-    width: 220px;
-    height: 220px;
-    background: #7c3aed;
-    bottom: -5%;
-    right: -5%;
-    animation: floatingGlow 8s infinite alternate-reverse ease-in-out;
-}
-
-/* Main Display Placeholder Container */
-.placeholder-img {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    background: var(--glass-bg);
-    /* Alternative texture option using background image properties if needed */
-    /* background: url('image_bff3d9.jpg') center/cover no-repeat; */
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(16px);
-    border-radius: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
-}
-
-.placeholder-img svg {
-    width: 80px;
-    height: 80px;
-    color: rgba(255, 255, 255, 0.15);
-    transition: color 0.3s ease, transform 0.5s ease;
-}
-
-.placeholder-img:hover svg {
-    color: rgba(37, 99, 235, 0.4);
-    transform: scale(1.05);
-}
-
-/* Ambient Floating Keyframes Configuration */
-@keyframes floatingGlow {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(20px, 15px) scale(1.1); }
-}
-
-/* ==========================================================================
-   INTERSECTION OBSERVER REVEAL ANIMATIONS
-   ========================================================================== */
-.reveal-left, .reveal-right {
+/* Animation trigger class */
+.animate-hidden {
     opacity: 0;
-    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
 }
 
-.reveal-left { transform: translateX(-40px); }
-.reveal-right { transform: translateX(40px); }
-
-.reveal-active {
+.animate-visible {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
 }
-
-/* ==========================================================================
-   RESPONSIVE MEDIA MEDIA BREAKPOINTS RULES
-   ========================================================================== */
-@media (max-width: 992px) {
-    .grid-2-col {
-        grid-template-columns: 1fr;
-        gap: 56px;
-        text-align: center;
-    }
-
-    .hero-subtitle {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hero-cta-group {
-        justify-content: center;
-    }
-    
-    .image-wrapper {
-        max-width: 380px;
-    }
-}
-
-@media (max-width: 576px) {
-    .about-hero {
-        padding-top: 100px;
-    }
-    
-    .hero-cta-group .btn {
-        width: 100%;
-    }
-}
-
-
 /* ==========================================================================
    VISION AND MISSION STYLE
    ========================================================================== */
