@@ -95,19 +95,19 @@ function renderPaymentDetails(method) {
     if (method === 'bank') {
         box.innerHTML = `
             <div class="bank-details-box">
-                <p><strong>Bank:</strong> OPAY</p>
-                <p><strong>Account Name:</strong> Skill Connect Global</p>
-                <p><strong>Account Number:</strong> 9138859606</p>
-                <hr style="margin: 0.5rem 0; border: 0; border-top: 1px solid var(--border-color, #334155);">
                 <p><strong>Bank:</strong> PARALLEX BANK</p>
-                <p><strong>Account Name:</strong> Skill Connect Global</p>
-                <p><strong>Account Number:</strong> 0400332857</p>
+                <p><strong>Account Name:</strong> VINCENT CHIDIEBUBE NGOKA</p>
+                <p><strong>Account Number:</strong> 2001346579 </p>
+                <hr style="margin: 0.5rem 0; border: 0; border-top: 1px solid var(--border-color, #334155);">
+                <p><strong>Bank:</strong> OPAY BANK</p>
+                <p><strong>Account Name:</strong> VINCENT CHIDIEBUBE NGOKA</p>
+                <p><strong>Account Number:</strong> 9138859606</p>
             </div>`;
     } else {
         box.innerHTML = `
             <div class="bank-details-box">
                 <p><strong>USDT Address (TRC20):</strong></p>
-                <p style="word-break: break-all; color: #3b82f6;"><code>TQDxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></p>
+                <p style="word-break: break-all; color: #3b82f6;"><code>TWovVQD4EXyaAJ2dVsx5DAH7DVSkW8c9UD</code></p>
             </div>`;
     }
 }
