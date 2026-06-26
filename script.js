@@ -181,6 +181,23 @@ document.addEventListener('DOMContentLoaded', () => {
     animItems.forEach(item => generalObserver.observe(item));
 
 
+    //uiqwiuuwquwquuw//
+
+    const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-visible');
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.animate-hidden').forEach(section => {
+    observer.observe(section);
+});
+
+    
+
+
     /* ==========================================================================
        3. INTERACTIVE MOUSE-MOVE GLOW EFFECTS (CARD TRANSITIONS)
        ========================================================================== */
