@@ -60,43 +60,12 @@ const COURSES = [
     {
         id: "web_dev_ai",
         title: "Website Development with AI",
-        educator: "Dr. Charles Obi",
+        educator: "MR.VINCENT CHIIDIEBUBE.N",
         price: 16000,
-        link: "https://skillconnect.com/classroom/web-ai",
+        link: "https://superb-cannoli-66da01.netlify.app",
         desc: "Master layout construction, responsive styling design, and full-stack architecture deployments accelerated through modern contextual Large Language Model assistants."
     },
-    {
-        id: "data_analytics_pro",
-        title: "Advanced Data Analytics & BI",
-        educator: "Sarah Jenkins",
-        price: 14500,
-        link: "https://skillconnect.com/classroom/data-analytics",
-        desc: "Deep dive into statistical processing modeling, predictive metrics calculation arrays, and clean visual storytelling dashboard creations utilizing enterprise software arrays."
-    },
-    {
-        id: "cybersec_frameworks",
-        title: "Cybersecurity & Ethical Hacking",
-        educator: "Marcus Vance",
-        price: 18000,
-        link: "https://skillconnect.com/classroom/cybersecurity",
-        desc: "Learn real-world defensive methodologies, infrastructure network vulnerability scanning parameters, and automated threat mitigations to secure data assets."
-    },
-    {
-        id: "ui_ux_mastery",
-        title: "UI/UX Product Architecture",
-        educator: "Elena Rostova",
-        price: 12000,
-        link: "https://skillconnect.com/classroom/uiux",
-        desc: "Translate ambiguous interface definitions into clear visual structures using precise component systems, human-centered prototyping behaviors, and interactive testing rules."
-    },
-    {
-        id: "cloud_infra_devops",
-        title: "Cloud Infrastructure & DevOps Pro",
-        educator: "Tunde Adebayo",
-        price: 15000,
-        link: "https://skillconnect.com/classroom/devops",
-        desc: "Automate delivery pipelines using modern deployment platforms, configuration management scripts, and resilient clustering setups for enterprise grade systems."
-    }
+    
 ];
 
 let currentUserDocId = null;
